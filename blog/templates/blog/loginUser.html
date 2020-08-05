@@ -1,0 +1,15 @@
+{% extends "blog/base.html" %} {% block content %}Login {% if error %}
+<div class="alert alert-danger" role="alert">
+    {{ error }}
+</div>
+{% endif %}
+
+<form method="POST">
+
+    {% csrf_token %} {{ form }}
+
+    <button type="submit">Login</button>
+
+</form>
+
+{% endblock %}
