@@ -17,6 +17,7 @@ urlpatterns = [
     path("allblogs/",views.all_blogs, name="all_blogs"), # shob blog ekshathey dekhbe
     path("allblogs/all_blogs_ascending/",views.all_blogs_ascending, name="all_blogs_ascending"), #shob blog ekshathe dekhbe but ascending order e
     path("userhome/",views.userhome, name="userhome"), #signup sheshe user jeikhane eshe land korbe
+    path("create/",views.createBlogs,name="createBlogs"), #Create new blogs
     
     
     

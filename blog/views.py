@@ -6,6 +6,7 @@ from django.contrib.auth import login,logout,authenticate
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.urls import reverse
+from .forms import UserBlogForm
 from .models import Blog
 
 # Create your views here.
@@ -100,9 +101,24 @@ def loginUser(request):
             
 
 
+#Create Blogs Views
 
+def createBlogs(request):
+    if request.method == "GET":
+        return render(request, "blog/createBlogs.html", {"form":UserBlogForm()})
+    else:
+        try:
+            form = UserBlogForm(request.POST)
+            newBlog = form.save(commit=False) #Not saving to the db yet
+            newBlog.user = request.user
+            newBlog.save() #now it's saved to the user.
+            return redirect ("blog:currentBlogs")
+        except ValueError:
+            return render(request, "blog/createBlogs.html", {"form":UserBlogForm(),"error": "Bad Data"})
 
+        
 
+# gjsgfkjsgfjksgfkjsgf
 
 
 
